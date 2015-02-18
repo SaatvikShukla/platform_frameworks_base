@@ -2388,4 +2388,9 @@
     <!-- Configuration that determines if PROTOCOL_ERRORS is to be treated as a
          permanent error -->
     <bool translatable="false" name="config_protocol_errors_perm_failure">true</bool>
+
+    <!-- Default values for display color temperature -->
+    <integer name="config_dayColorTemperature">6500</integer>
+    <integer name="config_nightColorTemperature">4500</integer>
+    <integer name="config_outdoorAmbientLux">9000</integer>
 </resources>

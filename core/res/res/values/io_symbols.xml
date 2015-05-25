@@ -34,6 +34,8 @@
     <java-symbol type="array" name="config_forceEnabledComponents" />
 
     <java-symbol type="bool" name="config_singleStageCameraKey" />
+    <java-symbol type="integer" name="config_longPressOnMenuBehavior" />
+    <java-symbol type="integer" name="config_longPressOnAppSwitchBehavior" />
 
     <!-- LED pulse -->
     <java-symbol type="bool" name="config_ledCanPulse" />

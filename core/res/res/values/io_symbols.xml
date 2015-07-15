@@ -35,4 +35,7 @@
 
     <java-symbol type="bool" name="config_singleStageCameraKey" />
 
+    <!-- LED pulse -->
+    <java-symbol type="bool" name="config_ledCanPulse" />
+
 </resources>

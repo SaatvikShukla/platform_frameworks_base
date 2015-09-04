@@ -2329,4 +2329,7 @@
     <!-- Ignored sms packages -->
     <string-array name="config_ignored_sms_packages"></string-array>
 
+    <!-- Config to disable showing ringtones from removable storage -->
+    <bool name="config_excludeRingtonesFromRemovableStorage">false</bool>
+
 </resources>

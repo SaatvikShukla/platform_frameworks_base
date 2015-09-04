@@ -292,4 +292,7 @@
   <!-- LED pulse -->
   <java-symbol type="bool" name="config_ledCanPulse" />
 
+  <!-- Config to disable showing ringtones from removable storage -->
+  <java-symbol type="bool" name="config_excludeRingtonesFromRemovableStorage" />
+
 </resources>

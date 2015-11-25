@@ -596,6 +596,17 @@ public class LocationManagerService extends ILocationManager.Stub {
         } else {
             Slog.e(TAG, "Hardware Activity-Recognition not supported.");
         }
+        ActivityRecognitionProxy proxy = ActivityRecognitionProxy.createAndBind(
+                mContext,
+                mLocationHandler,
+                activityRecognitionHardwareIsSupported,
+                activityRecognitionHardware,
+                com.android.internal.R.bool.config_enableActivityRecognitionHardwareOverlay,
+                com.android.internal.R.string.config_activityRecognitionHardwarePackageName,
+                com.android.internal.R.array.config_locationProviderPackageNames);
+        if (proxy == null) {
+            Slog.e(TAG, "Unable to bind ActivityRecognitionProxy.");
+        }
 
         mComboNlpPackageName = resources.getString(
             com.android.internal.R.string.config_comboNetworkLocationProvider);

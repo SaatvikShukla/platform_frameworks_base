@@ -1198,6 +1198,37 @@ public interface IMountService extends IInterface {
                     _data.recycle();
                 }
             }
+
+            @Override
+            public void createNewUserDir(int userHandle, String path) throws RemoteException {
+                Parcel _data = Parcel.obtain();
+                Parcel _reply = Parcel.obtain();
+                try {
+                    _data.writeInterfaceToken(DESCRIPTOR);
+                    _data.writeInt(userHandle);
+                    _data.writeString(path);
+                    mRemote.transact(Stub.TRANSACTION_createNewUserDir, _data, _reply, 0);
+                    _reply.readException();
+                } finally {
+                    _reply.recycle();
+                    _data.recycle();
+                }
+            }
+
+            @Override
+            public void deleteUserKey(int userHandle) throws RemoteException {
+                Parcel _data = Parcel.obtain();
+                Parcel _reply = Parcel.obtain();
+                try {
+                    _data.writeInterfaceToken(DESCRIPTOR);
+                    _data.writeInt(userHandle);
+                    mRemote.transact(Stub.TRANSACTION_deleteUserKey, _data, _reply, 0);
+                    _reply.readException();
+                } finally {
+                    _reply.recycle();
+                    _data.recycle();
+                }
+            }
         }
 
         private static final String DESCRIPTOR = "IMountService";
@@ -1879,6 +1910,21 @@ public interface IMountService extends IInterface {
                     reply.writeNoException();
                     return true;
                 }
+                case TRANSACTION_createNewUserDir: {
+                    data.enforceInterface(DESCRIPTOR);
+                    int userHandle = data.readInt();
+                    String path = data.readString();
+                    createNewUserDir(userHandle, path);
+                    reply.writeNoException();
+                    return true;
+                }
+                case TRANSACTION_deleteUserKey: {
+                    data.enforceInterface(DESCRIPTOR);
+                    int userHandle = data.readInt();
+                    deleteUserKey(userHandle);
+                    reply.writeNoException();
+                    return true;
+                }
             }
             return super.onTransact(code, data, reply, flags);
         }
@@ -2196,4 +2242,19 @@ public interface IMountService extends IInterface {
     public String getPrimaryStorageUuid() throws RemoteException;
     public void setPrimaryStorageUuid(String volumeUuid, IPackageMoveObserver callback)
             throws RemoteException;
+
+    /**
+     * Creates the user data directory, possibly encrypted
+     * @param userHandle Handle of the user whose directory we are creating
+     * @param path Path at which to create the directory.
+     */
+    public void createNewUserDir(int userHandle, String path)
+        throws RemoteException;
+
+    /**
+     * Securely delete the user's encryption key
+     * @param userHandle Handle of the user whose key we are deleting
+     */
+    public void deleteUserKey(int userHandle)
+        throws RemoteException;
 }

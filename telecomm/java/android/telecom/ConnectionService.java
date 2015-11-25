@@ -714,18 +714,6 @@ public abstract class ConnectionService extends Service {
         }
     }
 
-    /** @hide */
-    public PhoneAccountHandle getAccountHandle(
-            final ConnectionRequest request, Connection connection) {
-        PhoneAccountHandle pHandle = connection.getPhoneAccountHandle();
-        if (pHandle != null) {
-            Log.i(this, "getAccountHandle, return account handle from local, %s", pHandle);
-            return pHandle;
-        } else {
-            return request.getAccountHandle();
-        }
-    }
-
     private void abort(String callId) {
         Log.d(this, "abort %s", callId);
         findConnectionForAction(callId, "abort").onAbort();

@@ -410,17 +410,7 @@ status_t BootAnimation::readyToRun() {
             ((zipFile = ZipFileRO::open(OEM_BOOTANIMATION_FILE)) != NULL)) ||
 
             ((access(SYSTEM_BOOTANIMATION_FILE, R_OK) == 0) &&
-<<<<<<< HEAD
             ((zipFile = ZipFileRO::open(SYSTEM_BOOTANIMATION_FILE)) != NULL))) {
-=======
-            ((zipFile = ZipFileRO::open(SYSTEM_BOOTANIMATION_FILE)) != NULL)) ||
-
-            ((access(getAnimationFileName(IMG_DATA), R_OK) == 0) &&
-            ((zipFile = ZipFileRO::open(getAnimationFileName(IMG_DATA))) != NULL)) ||
-
-            ((access(getAnimationFileName(IMG_SYS), R_OK) == 0) &&
-            ((zipFile = ZipFileRO::open(getAnimationFileName(IMG_SYS))) != NULL))) {
->>>>>>> d168891... BootAnimation: Play boot/shutdown animation and music
         mZip = zipFile;
     }
 
@@ -711,15 +701,10 @@ bool BootAnimation::movie()
     mZip->endIteration(cookie);
 
 #ifndef CONTINUOUS_SPLASH
-    // clear screen
     glShadeModel(GL_FLAT);
     glDisable(GL_DITHER);
     glDisable(GL_SCISSOR_TEST);
     glDisable(GL_BLEND);
-    glClearColor(0,0,0,1);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    eglSwapBuffers(mDisplay, mSurface);
 #endif
 
     glBindTexture(GL_TEXTURE_2D, 0);

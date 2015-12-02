@@ -11,8 +11,6 @@ import android.view.View;
 import com.android.systemui.R;
 import com.android.systemui.statusbar.policy.Clock;
 
-import cyanogenmod.providers.CMSettings;
-
 /**
  * To control your...clock
  */
@@ -39,10 +37,10 @@ public class ClockController {
 
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.STATUS_BAR_AM_PM), false, this);
-            resolver.registerContentObserver(CMSettings.System.getUriFor(
-                    CMSettings.System.STATUS_BAR_CLOCK), false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_AM_PM), false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_CLOCK), false, this);
             updateSettings();
         }
 
@@ -103,10 +101,10 @@ public class ClockController {
 
     private void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
-        mAmPmStyle = CMSettings.System.getInt(resolver,
-                CMSettings.System.STATUS_BAR_AM_PM, Clock.AM_PM_STYLE_GONE);
-        mClockLocation = CMSettings.System.getInt(
-                resolver, CMSettings.System.STATUS_BAR_CLOCK, STYLE_CLOCK_RIGHT);
+        mAmPmStyle = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_AM_PM, Clock.AM_PM_STYLE_GONE);
+        mClockLocation = Settings.System.getInt(
+                resolver, Settings.System.STATUS_BAR_CLOCK, STYLE_CLOCK_RIGHT);
         updateActiveClock();
     }
 

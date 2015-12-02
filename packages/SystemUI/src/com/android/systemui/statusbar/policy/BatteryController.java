@@ -32,8 +32,6 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import cyanogenmod.providers.CMSettings;
-
 public class BatteryController extends BroadcastReceiver {
     private static final String TAG = "BatteryController";
     private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
@@ -169,9 +167,9 @@ public class BatteryController extends BroadcastReceiver {
         private boolean mRegistered;
 
         private final Uri STYLE_URI =
-                CMSettings.System.getUriFor(CMSettings.System.STATUS_BAR_BATTERY_STYLE);
+                Settings.System.getUriFor(Settings.System.STATUS_BAR_BATTERY_STYLE);
         private final Uri PERCENT_URI =
-                CMSettings.System.getUriFor(CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT);
+                Settings.System.getUriFor(Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT);
 
         public SettingsObserver(Context context, Handler handler) {
             super(handler);
@@ -195,10 +193,10 @@ public class BatteryController extends BroadcastReceiver {
         }
 
         private void update() {
-            mStyle = CMSettings.System.getIntForUser(mResolver,
-                    CMSettings.System.STATUS_BAR_BATTERY_STYLE, 0, mUserId);
-            mPercentMode = CMSettings.System.getIntForUser(mResolver,
-                    CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0, mUserId);
+            mStyle = Settings.System.getIntForUser(mResolver,
+                    Settings.System.STATUS_BAR_BATTERY_STYLE, 0, mUserId);
+            mPercentMode = Settings.System.getIntForUser(mResolver,
+                    Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0, mUserId);
 
             fireSettingsChanged();
         }

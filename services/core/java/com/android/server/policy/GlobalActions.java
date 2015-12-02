@@ -88,7 +88,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.android.internal.util.cm.PowerMenuConstants.*;
+import static com.android.internal.util.io.PowerMenuConstants.*;
 
 /**
  * Helper to show the global actions dialog.  Each item is an {@link Action} that

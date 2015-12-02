@@ -197,7 +197,6 @@ import android.util.SparseIntArray;
 import android.util.Xml;
 import android.view.Display;
 
-import cyanogenmod.providers.CMSettings;
 import dalvik.system.DexFile;
 import dalvik.system.VMRuntime;
 
@@ -1439,9 +1438,9 @@ public class PackageManagerService extends IPackageManager.Stub {
                                 }
                             }
                             if (!update && !isSystemApp(res.pkg)) {
-                                boolean privacyGuard = CMSettings.Secure.getIntForUser(
+                                boolean privacyGuard = Settings.Secure.getIntForUser(
                                         mContext.getContentResolver(),
-                                        CMSettings.Secure.PRIVACY_GUARD_DEFAULT,
+                                        Settings.Secure.PRIVACY_GUARD_DEFAULT,
                                         0, UserHandle.USER_CURRENT) == 1;
                                 if (privacyGuard) {
                                     mAppOps.setPrivacyGuardSettingForPackage(

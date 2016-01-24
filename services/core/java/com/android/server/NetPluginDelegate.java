@@ -48,7 +48,7 @@ public class NetPluginDelegate {
 
     private static boolean extensionFailed;
 
-    static void getTetherStats(NetworkStats uidStats, NetworkStats devStats,
+    public static void getTetherStats(NetworkStats uidStats, NetworkStats devStats,
             NetworkStats xtStats) {
         if (LOGV) Slog.v(TAG, "getTetherStats() E");
         if (!loadTetherExtJar()) {

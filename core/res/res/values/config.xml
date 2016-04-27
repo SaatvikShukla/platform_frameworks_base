@@ -2498,6 +2498,17 @@
     <bool name="config_enableKeypressOptimization">false</bool>
     <integer-array name="keypress_param_value"/>
 
+    <!-- Boolean to enable stk functionality on Samsung phones -->
+    <bool name="config_samsung_stk">false</bool>
+
+    <!-- The list of components which should be automatically disabled. -->
+    <string-array name="config_disabledComponents" translatable="false">
+    </string-array>
+
+    <!-- Older sensors are not setting event.timestamp correctly.  Setting to
+          true will use SystemClock.elapsedRealtimeNanos() to set timestamp-->
+    <bool name="config_useSystemClockforSensors">false</bool>
+
     <bool name="config_enableDataSwitch">false</bool>
 
     <!-- Whether to use TMO MCC MNC roaming setting -->
